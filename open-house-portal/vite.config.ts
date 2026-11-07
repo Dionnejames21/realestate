@@ -10,7 +10,9 @@ import { defineConfig } from "@leadconnector/vite-tanstack-config";
 export default defineConfig({
   // Browser errors stay in the trusted parent-frame console-log flow;
   // do not expose the bridge collector on the public sandbox tunnel.
-  devServerBridge: { errorCollector: false },
+  devServerBridge: {   nitro: {
+    preset: "netlify",
+  }, },
   // Do not set server.hmr.timeout — Vite 8 deprecated those websocket fields
   // (use server.ws.*). Overlay/host/port are package-owned; default WS timeout is 30s.
   tanstackStart: {
